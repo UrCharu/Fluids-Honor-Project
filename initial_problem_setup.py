@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import math as m
 """
 This is an initial file with thoughts about the functions we will be using. None of this is 
 permanent.
