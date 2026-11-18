@@ -12,4 +12,4 @@ def C_icp(t):
   if t < t_fill + tau:
     return 0
   elif:
-    return C_in
+    return C_out
