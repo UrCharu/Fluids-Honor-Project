@@ -43,3 +43,20 @@ def differential_flow_eq(t_max, dt, rho, C, Q_in, Q_out, Q_leek, D_in, D_out, D_
     for n in range(nt-1):
         P_prime[n] = const * (n * dt) # n*dt is the time
     return P_prime
+
+def create_mesh_downstream(nx, theta, L, L0 = 0):
+    mesh_points = np.linspace(L0, L, nx)
+    z_values_downstream = np.sin(theta*pi/180)*(L-mesh_points)
+    return mesh_points, z_values_downstream
+
+def create_mesh_upstream(nx, theta, L, L0 = 0):
+    mesh_points = np.linspace(L0, L, nx)
+    z_values_upstream = np.sin(theta*pi/180)*(mesh_points-L0)
+    return mesh_points, z_values_upstream
+
+def create_mesh(nx, theta, L_down, L_up):
+    mesh_points_down , z_values_downstream = create_mesh_downstream(nx, theta, L_down)
+    mesh_points_up, z_values_upstream = create_mesh_upstream(nx, theta, L_up+L_down, L_down)
+    mesh_points = np.concatenate((mesh_points_down, mesh_points_up[1:]))
+    z_values = np.concatenate((z_values_downstream, z_values_upstream[1:]))
+    return mesh_points, z_values
