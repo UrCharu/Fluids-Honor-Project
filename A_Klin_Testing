@@ -1,1 +1,15 @@
+C_in = float(input("Input Cin(t): ")) #from KRJ test code
+t_fill = Vol_tot / Q
+tau = V / Q
 
+def C_out(t):
+  if t < t_fill:
+    return 0
+  elif:
+    return C_in
+
+def C_icp(t):
+  if t < t_fill + tau:
+    return 0
+  elif:
+    return C_in
